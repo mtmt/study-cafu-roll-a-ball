@@ -1,19 +1,16 @@
 @startuml
+
 title カウントの表示
 
 package Domain {
-
     package Entity {
-
         interface ICountEntity {
             int Value
         }
-
         class CountEntity {
             int Value
         }
     }
-
     package Structure {
         interface IPresentationCountStructure {
             string CountText
@@ -22,37 +19,27 @@ package Domain {
             string CountText
         }
     }
-
     package Translator {
         class CountTranslator {
             IPresentationScore Translate(ICountEntity entity)
         }
     }
-
     package UseCase {
-
         interface IRenderCountUseCase {
             void Render(ICountEntity entity)
         }
-
         interface ICountTranslator {
             IPresentationScore Translate(ICountEntity entity)
         }
-
         interface ICountPresenter {
             void Render(IPresentationCountStructure structure)
         }
-
         class RenderCountInteractor {
             void Render(ICountEntity entity)
         }
-
     }
-
 }
-
 package Presentation {
-
     package Presenter {
         interface ICountView {
             void Render(IPresentationCountStructure structure)
@@ -61,7 +48,6 @@ package Presentation {
             void Render(IPresentationCountStructure structure)
         }
     }
-
     package View {
         class CountView {
             void Render(IPresentationCountStructure structure)
@@ -82,9 +68,9 @@ CountTranslator ..> IPresentationCountStructure
 
 RenderCountInteractor ..> ICountEntity
 RenderCountInteractor ..> ICountTranslator
-RenderCountInteractor ..> ICountPresenter
+RenderCountInteractor .left.> ICountPresenter
 
-ICountPresenter <|.. CountPresenter
+ICountPresenter <|.left. CountPresenter
 ICountPresenter ..> IPresentationCountStructure
 CountPresenter ..> ICountView
 CountPresenter ..> IPresentationCountStructure
