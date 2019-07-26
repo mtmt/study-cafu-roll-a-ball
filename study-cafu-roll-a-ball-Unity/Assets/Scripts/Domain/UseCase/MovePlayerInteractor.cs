@@ -8,15 +8,15 @@ namespace StudyCafuRollABall.Domain.UseCase
         public MovePlayerInteractor(IPlayerEntity entity, float speed)
         {
             this.entity = entity;
-            this.speed = speed;
+            Speed = speed;
         }
 
         readonly IPlayerEntity entity;
-        readonly float speed;
+        public float Speed { get; }
 
         public void Move(Vector3 direction)
         {
-            entity.AddForce(direction * speed);
+            entity.AddForce(direction * Speed);
         }
     }
 }
