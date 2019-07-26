@@ -1,23 +1,25 @@
 @startuml
 
-title プレイヤーの移動
+title プレイヤー移動
 
 package Domain {
     package Entity {
         interface IPlayerEntity {
-            Rigidbody Rigidbody
+            Vector3 Position
             void AddForce(Vector3 force)
         }
         class PlayerEntity {
-            Rigidbody Rigidbody
+            Vector3 Position
             void AddForce(Vector3 force)
         }
     }
     package UseCase {
         interface IMovePlayerUseCase {
+            float Speed
             void Move(Vector3 direction)
         }
         class MovePlayerInteractor {
+            float Speed
             void Move(Vector3 direction)
         }
     }
@@ -40,10 +42,10 @@ package Presentation {
 IPlayerEntity <|.. PlayerEntity
 
 IMovePlayerUseCase <|.. MovePlayerInteractor
-MovePlayerInteractor .> IPlayerEntity
+MovePlayerInteractor ..> IPlayerEntity
 
-MovePlayerController o.> "4" ITrigger
-MovePlayerController .> IMovePlayerUseCase
+MovePlayerController o.left.> "4" ITrigger
+MovePlayerController .left.> IMovePlayerUseCase
 
 ITrigger <|.. KeyOrButtonOrWhatever
 
