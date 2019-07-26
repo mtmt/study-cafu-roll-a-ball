@@ -5,7 +5,7 @@ namespace StudyCafuRollABall.Domain.Entity
 {
     public interface IPlayerEntity : IEntity
     {
-        Rigidbody Rigidbody { get; }
+        Vector3 Position { get; }
         void AddForce(Vector3 force);
     }
 }
