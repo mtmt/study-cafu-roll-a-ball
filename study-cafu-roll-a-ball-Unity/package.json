@@ -1,5 +1,13 @@
 {
+  "name": "study-cafu",
+  "version": "1.0.0",
+  "description": "study of CAFU for Roll-a-ball",
+  "repository": "git@github:mtmt/study-cafu-roll-a-ball.git",
+  "author": "mtmt",
+  "license": "MIT",
+  "private": true,
   "dependencies": {
-    "@umm/cafu_core": "umm/cafu_core#^3.0.0"
+    "@umm/cafu_core": "umm/cafu_core#^3.0.0",
+    "@umm/zenject": "umm/zenject"
   }
 }
