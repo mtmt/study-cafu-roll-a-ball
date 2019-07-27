@@ -4,7 +4,13 @@ namespace StudyCafuRollABall.Domain.Entity
 {
     public class RenderPickUpEntity : IRenderPickUpEntity
     {
-        public BoolReactiveProperty IsVisible { get; } = new BoolReactiveProperty();
+        public RenderPickUpEntity(bool isVisible)
+        {
+            IsVisible = new BoolReactiveProperty(isVisible);
+        }
+
+        public BoolReactiveProperty IsVisible { get; }
+
         public void Show()
         {
             IsVisible.Value = true;
