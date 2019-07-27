@@ -1,6 +1,6 @@
 @startuml
 
-title `Pick Up`の表示
+title `Pick Up`表示
 
 package Domain {
     package Entity {
@@ -30,13 +30,13 @@ package Domain {
     }
     package UseCase {
         interface IRenderPickUpUseCase {
-            + void Render(IVisibleEntity visibleEntity)
+            + void Render(IRenderPickUpEntity entity)
         }
         class RenderPickUpInteractor {
-            + void Render(IVisibleEntity visibleEntity)
+            + void Render(IRenderPickUpEntity entity)
         }
         interface IRenderPickUpPresenter {
-            + void Render(IPresentationPickUpStructure structure)
+            + void Render(IPickUpStructure structure)
         }
         interface IRenderPickUpTranslator {
             + IRenderPickUpStructure Translate(IRenderPickUpEntity entity)
@@ -49,7 +49,7 @@ package Presentation {
             + void Render(bool isVisible)
         }
         class RenderPickUpPresenter {
-            + void Render(!PresentationPickUpStructure structure)
+            + void Render(IPickUpStructure structure)
         }
     }
     package View {
@@ -64,24 +64,24 @@ IRenderPickUpEntity <|.. RenderPickUpEntity
 IRenderPickUpStructure <|.. RenderPickUpStructure
 
 IRenderPickUpUseCase <|.. RenderPickUpInteractor
-IRenderPickUpUseCase ..> IRenderPickUpEntity : use >
+IRenderPickUpUseCase ..> IRenderPickUpEntity
 
-RenderPickUpInteractor ..> IRenderPickUpEntity : use >
-RenderPickUpInteractor ..> IRenderPickUpTranslator : call >
-RenderPickUpInteractor ..> IRenderPickUpStructure : use >
-RenderPickUpInteractor .left.> IRenderPickUpPresenter : call >
+RenderPickUpInteractor ..> IRenderPickUpEntity
+RenderPickUpInteractor ..> IRenderPickUpTranslator
+RenderPickUpInteractor ..> IRenderPickUpStructure
+RenderPickUpInteractor .left.> IRenderPickUpPresenter
 
 IRenderPickUpTranslator <|.. RenderPickUpTranslator
-IRenderPickUpTranslator ..> IRenderPickUpEntity : use >
+IRenderPickUpTranslator ..> IRenderPickUpEntity
 
-RenderPickUpTranslator ..> IRenderPickUpEntity : use >
-RenderPickUpTranslator ..> IRenderPickUpStructure : use >
+RenderPickUpTranslator ..> IRenderPickUpEntity
+RenderPickUpTranslator ..> IRenderPickUpStructure
 
 IRenderPickUpPresenter <|.left. RenderPickUpPresenter
-IRenderPickUpPresenter ..> IRenderPickUpStructure : use >
+IRenderPickUpPresenter ..> IRenderPickUpStructure
 
-RenderPickUpPresenter ..> IRenderPickUpStructure : use >
-RenderPickUpPresenter ..> IRenderPickUpView : call >
+RenderPickUpPresenter ..> IRenderPickUpStructure
+RenderPickUpPresenter ..> IRenderPickUpView
 
 IRenderPickUpView <|.. RenderPickUpView
 
