@@ -9,7 +9,7 @@ namespace StudyCafuRollABall.Tests.PlayMode.Scripts.Domain.Entity
 {
     public class PlayerEntityTest : ZenjectIntegrationTestFixture
     {
-        [Inject] IPlayerEntity playerEntity;
+        [Inject] IPlayerEntity playerEntity = default;
 
         [SetUp]
         public void 前準備()
