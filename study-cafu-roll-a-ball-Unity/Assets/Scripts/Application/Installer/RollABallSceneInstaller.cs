@@ -1,4 +1,5 @@
 using System;
+using StudyCafuRollABall.Domain.UseCase;
 using StudyCafuRollABall.Presentation.Controller;
 using StudyCafuRollABall.Presentation.View;
 using UnityEngine;
@@ -12,6 +13,9 @@ namespace StudyCafuRollABall.Application.Installer
 
         public override void InstallBindings()
         {
+            // use case
+            Container.BindInterfacesTo<CollectPickUpInteractor>().AsCached();
+
             // presenter
             Container.BindInterfacesTo<CollectPickUpController>().AsCached();
 
