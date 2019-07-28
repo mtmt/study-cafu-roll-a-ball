@@ -1,9 +1,11 @@
+using System;
 using StudyCafuRollABall.Domain.Entity;
 using StudyCafuRollABall.Domain.Structure;
 using StudyCafuRollABall.Domain.Translator;
 using StudyCafuRollABall.Domain.UseCase;
 using StudyCafuRollABall.Presentation.Presenter;
 using StudyCafuRollABall.Presentation.View;
+using UnityEngine;
 using Zenject;
 
 namespace StudyCafuRollABall.Application.Installer
@@ -25,6 +27,8 @@ namespace StudyCafuRollABall.Application.Installer
 
             // use case
             Container.BindInterfacesTo<RenderPickUpInteractor>().AsCached();
+            Container.BindInterfacesTo<DespawnPickUpInteractor>().AsCached()
+                .WithArguments(gameObject.name);
 
             // presenter
             Container.BindInterfacesTo<RenderPickUpPresenter>().AsCached();
