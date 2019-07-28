@@ -1,12 +1,22 @@
-using UnityEngine;
+using StudyCafuRollABall.Domain.Structure;
+using UniRx;
+using Zenject;
 
 namespace StudyCafuRollABall.Domain.UseCase
 {
-    class CollectPickUpInteractor : ICollectPickUpUseCase
+    public class CollectPickUpInteractor : ICollectPickUpUseCase
     {
+        public CollectPickUpInteractor(IFactory<string, ICollectPickUpStructure> factory)
+        {
+            this.factory = factory;
+        }
+
+        readonly IFactory<string, ICollectPickUpStructure> factory;
+
         public void Collect(string name)
         {
-            Debug.Log($"Collect! -> {name}");
+            var structure = factory.Create(name);
+            MessageBroker.Default.Publish(structure);
         }
     }
 }
