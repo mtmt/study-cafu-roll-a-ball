@@ -6,16 +6,16 @@ namespace StudyCafuRollABall.Presentation.View
 {
     public class RenderPickUpView : IRenderPickUpView
     {
-        public RenderPickUpView([Inject(Id = "PickUp")]Transform transform)
+        public RenderPickUpView([Inject(Id = "PickUp")] Transform transform)
         {
-            this.transform = transform;
+            gameObject = transform.gameObject;
         }
 
-        readonly Transform transform;
+        readonly GameObject gameObject;
 
         public void Render(bool isVisible)
         {
-            transform.gameObject.SetActive(isVisible);
+            gameObject.SetActive(isVisible);
         }
     }
 }
