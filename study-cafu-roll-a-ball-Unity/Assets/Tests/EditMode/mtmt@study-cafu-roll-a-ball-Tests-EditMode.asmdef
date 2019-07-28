@@ -3,8 +3,10 @@
     "references": [
         "Zenject",
         "Zenject-TestFramework",
+        "umm@unirx",
         "umm@cafu_core@v3",
-        "mtmt@study-cafu-roll-a-ball"
+        "mtmt@study-cafu-roll-a-ball",
+        ""
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
