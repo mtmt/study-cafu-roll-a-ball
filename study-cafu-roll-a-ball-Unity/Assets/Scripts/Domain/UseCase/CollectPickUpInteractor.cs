@@ -4,7 +4,7 @@ namespace StudyCafuRollABall.Domain.UseCase
 {
     class CollectPickUpInteractor : ICollectPickUpUseCase
     {
-        public void Collent(string name)
+        public void Collect(string name)
         {
             Debug.Log($"Collect! -> {name}");
         }

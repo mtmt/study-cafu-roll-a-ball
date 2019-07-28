@@ -9,7 +9,7 @@ namespace StudyCafuRollABall.Presentation.Controller
         public CollectPickUpController(ICollectPickUpUseCase useCase, ICollectPickUpView view)
         {
             view.OnCollectAsObservable().Select(x => x.gameObject.name)
-                .Subscribe(name => useCase.Collent(name))
+                .Subscribe(name => useCase.Collect(name))
                 .AddTo(disposable);
         }
 
