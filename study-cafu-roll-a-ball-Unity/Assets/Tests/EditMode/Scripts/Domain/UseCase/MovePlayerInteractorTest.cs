@@ -12,9 +12,8 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
         static readonly Vector3 Direction = Vector3.forward;
         const float Speed = 3.0f;
 
-        [Inject] IPlayerEntity entity;
-        [Inject] IMovePlayerUseCase useCase;
-        [Inject] Mock<IPlayerEntity> mockEntity;
+        [Inject] IMovePlayerUseCase useCase= default;
+        [Inject] Mock<IPlayerEntity> mockEntity = default;
 
         [SetUp]
         public void 前準備()

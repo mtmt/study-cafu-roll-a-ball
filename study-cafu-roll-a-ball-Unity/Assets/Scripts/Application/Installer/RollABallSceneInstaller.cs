@@ -1,4 +1,5 @@
 using System;
+using StudyCafuRollABall.Domain.Entity;
 using StudyCafuRollABall.Domain.Structure;
 using StudyCafuRollABall.Domain.UseCase;
 using StudyCafuRollABall.Presentation.Controller;
@@ -10,10 +11,14 @@ namespace StudyCafuRollABall.Application.Installer
 {
     public class RollABallSceneInstaller : MonoInstaller
     {
-        [SerializeField] Settings settings;
+        [SerializeField] Settings settings = default;
 
         public override void InstallBindings()
         {
+            // entity
+            Container.BindIFactory<int, IPointEntity>().To<PointEntity>();
+            Container.BindInterfacesTo<ScoreEntity>().AsCached();
+
             // structure
             Container.BindIFactory<string, ICollectPickUpStructure>().To<CollectPickUpStructure>();
 

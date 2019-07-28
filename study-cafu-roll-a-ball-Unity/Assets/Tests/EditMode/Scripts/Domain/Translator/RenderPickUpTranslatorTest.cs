@@ -8,9 +8,8 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Translator
 {
     public class RenderPickUpTranslatorTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<bool, IRenderPickUpEntity> entityFactory;
-        [Inject] IFactory<bool, IRenderPickUpStructure> structureFactory;
-        [Inject] IRenderPickUpTranslator translator;
+        [Inject] IFactory<bool, IRenderPickUpEntity> entityFactory = default;
+        [Inject] IRenderPickUpTranslator translator = default;
 
         [SetUp]
         public void 前準備()
