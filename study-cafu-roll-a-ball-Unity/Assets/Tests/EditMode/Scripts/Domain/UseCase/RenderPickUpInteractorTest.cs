@@ -10,7 +10,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
 {
     public class RenderPickUpInteractorTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<bool, IRenderPickUpEntity> entityFactory;
+        [Inject] IRenderPickUpEntity entity;
         [Inject] IRenderPickUpTranslator translator;
         [Inject] IRenderPickUpUseCase useCase;
         [Inject] Mock<IRenderPickUpPresenter> mockPresenter;
@@ -19,8 +19,8 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
         public void 前準備()
         {
             // entity
-            Container.BindIFactory<bool, IRenderPickUpEntity>()
-                .To<RenderPickUpEntity>();
+            Container.BindInterfacesTo<RenderPickUpEntity>().AsCached()
+                .WithArguments(true);
 
             // structure
             Container.BindIFactory<bool, IRenderPickUpStructure>()
@@ -49,8 +49,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
         [Test]
         public void 表示できる()
         {
-            const bool expected = true;
-            var entity = entityFactory.Create(expected);
+            var expected = entity.IsVisible.Value;
             useCase.Render(entity);
 
             // mockのpresenterのrender()が正しい引数(structure)で
