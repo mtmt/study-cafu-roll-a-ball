@@ -6,7 +6,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Structure
 {
     public class RenderPickUpStructureTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<bool, IRenderPickUpStructure> factory;
+        [Inject] IFactory<bool, IRenderPickUpStructure> factory = default;
 
         [SetUp]
         public void 前準備()

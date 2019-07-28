@@ -8,7 +8,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
 {
     public class CollectPickUpInteractorTest : ZenjectUnitTestFixture
     {
-        [Inject] ICollectPickUpUseCase useCase;
+        [Inject] ICollectPickUpUseCase useCase = default;
 
         [SetUp]
         public void 前準備()

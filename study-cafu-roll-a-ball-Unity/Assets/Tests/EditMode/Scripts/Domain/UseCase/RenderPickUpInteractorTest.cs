@@ -10,10 +10,10 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
 {
     public class RenderPickUpInteractorTest : ZenjectUnitTestFixture
     {
-        [Inject] IRenderPickUpEntity entity;
-        [Inject] IRenderPickUpTranslator translator;
-        [Inject] IRenderPickUpUseCase useCase;
-        [Inject] Mock<IRenderPickUpPresenter> mockPresenter;
+        [Inject] IRenderPickUpEntity entity = default;
+        [Inject] IRenderPickUpTranslator translator = default;
+        [Inject] IRenderPickUpUseCase useCase = default;
+        [Inject] Mock<IRenderPickUpPresenter> mockPresenter = default;
 
         [SetUp]
         public void 前準備()

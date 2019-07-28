@@ -7,7 +7,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Entity
 {
     public class RenderPickUpEntityTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<bool, IRenderPickUpEntity> factory;
+        [Inject] IFactory<bool, IRenderPickUpEntity> factory = default;
 
         [SetUp]
         public void 前準備()

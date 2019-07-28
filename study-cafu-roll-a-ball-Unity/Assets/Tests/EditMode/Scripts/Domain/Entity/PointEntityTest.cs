@@ -7,7 +7,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Entity
     [TestFixture]
     public class PointEntityTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<int, IPointEntity> factory;
+        [Inject] IFactory<int, IPointEntity> factory = default;
 
         [SetUp]
         public void 前準備()

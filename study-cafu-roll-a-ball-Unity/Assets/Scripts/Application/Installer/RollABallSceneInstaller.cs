@@ -10,7 +10,7 @@ namespace StudyCafuRollABall.Application.Installer
 {
     public class RollABallSceneInstaller : MonoInstaller
     {
-        [SerializeField] Settings settings;
+        [SerializeField] Settings settings = default;
 
         public override void InstallBindings()
         {

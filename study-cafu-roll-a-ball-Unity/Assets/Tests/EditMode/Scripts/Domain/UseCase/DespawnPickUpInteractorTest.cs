@@ -11,9 +11,9 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
     public class DespawnPickUpInteractorTest : ZenjectUnitTestFixture
     {
         const string Name = "Name of Pick Up";
-        [Inject] Mock<IRenderPickUpEntity> mockEntity;
-        [Inject] IFactory<string, ICollectPickUpStructure> factory;
-        [Inject] IDespawnPickUpUseCase useCase;
+        [Inject] Mock<IRenderPickUpEntity> mockEntity = default;
+        [Inject] IFactory<string, ICollectPickUpStructure> factory = default;
+        [Inject] IDespawnPickUpUseCase useCase = default;
 
         [SetUp]
         public void 前準備()

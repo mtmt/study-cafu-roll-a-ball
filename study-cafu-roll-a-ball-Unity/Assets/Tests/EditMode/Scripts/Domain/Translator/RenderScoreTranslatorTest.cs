@@ -9,9 +9,9 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Translator
     [TestFixture]
     public class RenderScoreTranslatorTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<int, IPointEntity> pointFactory;
-        [Inject] IScoreEntity score;
-        [Inject] IRenderScoreTranslator translator;
+        [Inject] IFactory<int, IPointEntity> pointFactory = default;
+        [Inject] IScoreEntity score = default;
+        [Inject] IRenderScoreTranslator translator = default;
 
         [SetUp]
         public void 前準備()

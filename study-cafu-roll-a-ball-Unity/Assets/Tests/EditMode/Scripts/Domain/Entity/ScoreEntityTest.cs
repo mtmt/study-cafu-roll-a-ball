@@ -8,8 +8,8 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Entity
     [TestFixture]
     public class ScoreEntityTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<int, IPointEntity> pointFactory;
-        [Inject] IScoreEntity score;
+        [Inject] IFactory<int, IPointEntity> pointFactory = default;
+        [Inject] IScoreEntity score = default;
 
         [SetUp]
         public void 前準備()

@@ -8,9 +8,9 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Structure
     [TestFixture]
     public class RenderScoreStructureTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<int, IPointEntity> pointFactory;
-        [Inject] IScoreEntity score;
-        [Inject] IFactory<IScoreEntity, IRenderScoreStructure> factory;
+        [Inject] IFactory<int, IPointEntity> pointFactory = default;
+        [Inject] IScoreEntity score = default;
+        [Inject] IFactory<IScoreEntity, IRenderScoreStructure> factory = default;
 
         [SetUp]
         public void 前準備()

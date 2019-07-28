@@ -6,7 +6,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Structure
 {
     public class CollectPickUpStructureTest : ZenjectUnitTestFixture
     {
-        [Inject] IFactory<string, ICollectPickUpStructure> factory;
+        [Inject] IFactory<string, ICollectPickUpStructure> factory = default;
 
         [SetUp]
         public void 前準備()
