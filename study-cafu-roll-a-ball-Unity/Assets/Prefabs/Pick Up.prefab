@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2850c6e3273c470f897737c325a4d6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings:
+    gameObject: {fileID: 1162076593523988}
 --- !u!33 &33117627790695064
 MeshFilter:
   m_ObjectHideFlags: 0
