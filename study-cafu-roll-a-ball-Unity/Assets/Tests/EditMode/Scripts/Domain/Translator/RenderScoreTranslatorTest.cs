@@ -19,7 +19,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Translator
             // entity
             Container.BindIFactory<int, IPointEntity>().To<PointEntity>();
             Container.BindInterfacesTo<ScoreEntity>().AsCached();
-            
+
             // structure
             Container.BindIFactory<IScoreEntity, IRenderScoreStructure>()
                 .To<RenderScoreStructure>();
@@ -43,7 +43,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Translator
             var points = pointFactory.Create(p);
             score.Set(points);
 
-            var expected = p.ToString();
+            var expected = "Count: " + p;
             var actual = translator.Translate(score).ScoreText;
 
             Assert.That(actual, Is.EqualTo(expected));

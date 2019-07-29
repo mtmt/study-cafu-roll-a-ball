@@ -6,7 +6,7 @@ namespace StudyCafuRollABall.Domain.Structure
     {
         public RenderScoreStructure(IScoreEntity scoreEntity)
         {
-            ScoreText = scoreEntity.Points.Value.Value.ToString();
+            ScoreText = "Count: " + scoreEntity.Points.Value.Value.ToString();
         }
 
         public string ScoreText { get; }

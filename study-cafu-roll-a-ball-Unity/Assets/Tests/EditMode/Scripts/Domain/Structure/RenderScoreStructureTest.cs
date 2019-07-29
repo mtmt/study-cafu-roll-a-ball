@@ -41,7 +41,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.Structure
             var points = pointFactory.Create(p);
             score.Set(points);
 
-            var expected = p.ToString();
+            var expected = "Count: " + p;
             var actual = factory.Create(score).ScoreText;
 
             Assert.That(actual, Is.EqualTo(expected));

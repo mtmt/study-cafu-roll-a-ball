@@ -54,7 +54,7 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
             var points = factory.Create(p);
             score.Add(points);
 
-            var expected = p.ToString();
+            var expected = "Count: " + p.ToString();
 
             // presenterのrender()が正しい引数(structure)で
             // 呼び出されていることを確認する。
