@@ -54,6 +54,5 @@ namespace StudyCafuRollABall.Tests.PlayMode.Scripts.Domain.Entity
             var resultExpected = Vector3.zero.z;
             Assert.That(resultActual, Is.GreaterThan(resultExpected));
         }
-
     }
 }
