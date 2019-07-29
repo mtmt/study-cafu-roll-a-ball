@@ -3,6 +3,7 @@ using StudyCafuRollABall.Domain.Entity;
 using StudyCafuRollABall.Domain.Structure;
 using StudyCafuRollABall.Domain.UseCase;
 using StudyCafuRollABall.Presentation.Controller;
+using StudyCafuRollABall.Presentation.Presenter;
 using StudyCafuRollABall.Presentation.View;
 using UnityEngine;
 using Zenject;
@@ -24,13 +25,16 @@ namespace StudyCafuRollABall.Application.Installer
 
             // use case
             Container.BindInterfacesTo<CollectPickUpInteractor>().AsCached();
+            Container.BindInterfacesTo<RenderWinTextInteractor>().AsCached();
 
             // presenter
             Container.BindInterfacesTo<CollectPickUpController>().AsCached();
+            Container.BindInterfacesTo<RenderWinTextPresenter>().AsCached();
 
             // view
             Container.BindInterfacesTo<CollectPickUpView>()
                 .FromNewComponentOn(settings.Player).AsCached();
+            Container.BindInterfacesTo<RenderWinTextView>().AsCached();
         }
 
         [Serializable]
