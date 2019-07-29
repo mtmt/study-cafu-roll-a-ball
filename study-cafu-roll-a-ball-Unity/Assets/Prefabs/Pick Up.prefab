@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    gameObject: {fileID: 1162076593523988}
+    transform: {fileID: 4759749655149294}
 --- !u!33 &33117627790695064
 MeshFilter:
   m_ObjectHideFlags: 0
