@@ -8,11 +8,11 @@ namespace StudyCafuRollABall.Domain.UseCase
     {
         public RenderWinTextInteractor(IScoreEntity score, IRenderWinTextPresenter presenter)
         {
-            presenter.Hide();
+            presenter.SetText("");
 
             disposable = new CompositeDisposable();
             score.Points.Where(point => point.Value >= 12)
-                .Subscribe(_ => presenter.Show())
+                .Subscribe(_ => presenter.SetText("You Win!"))
                 .AddTo(disposable);
         }
 

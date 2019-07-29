@@ -4,7 +4,6 @@ namespace StudyCafuRollABall.Domain.UseCase
 {
     public interface IRenderWinTextPresenter : IPresenter
     {
-        void Show();
-        void Hide();
+        void SetText(string text);
     }
 }

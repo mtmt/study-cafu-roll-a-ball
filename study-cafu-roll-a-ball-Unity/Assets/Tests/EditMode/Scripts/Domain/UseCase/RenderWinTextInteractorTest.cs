@@ -38,20 +38,21 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
         }
 
         [Test]
-        public void 初期化時に非表示にしている()
+        public void 初期化時に空文字を表示している()
         {
-            mock.Verify(x => x.Show(), Times.Never);
-            mock.Verify(x => x.Hide(), Times.Once);
+            const string expected = "";
+            mock.Verify(x => x.SetText(expected), Times.Once);
         }
 
         [Test]
-        public void 規定の得点に達したときに表示できる()
+        public void 規定の得点に達したときに特定の文字列を表示できる()
         {
             const int goal = 12;
             var point = pointFactory.Create(goal);
             score.Add(point);
 
-            mock.Verify(x => x.Show(), Times.Once);
+            const string expected = "You Win!";
+            mock.Verify(x => x.SetText(expected), Times.Once);
         }
     }
 }
