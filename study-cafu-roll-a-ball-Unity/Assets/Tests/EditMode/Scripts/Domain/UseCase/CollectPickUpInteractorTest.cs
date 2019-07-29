@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using StudyCafuRollABall.Domain.Entity;
 using StudyCafuRollABall.Domain.Structure;
 using StudyCafuRollABall.Domain.UseCase;
 using UniRx;
@@ -8,11 +9,16 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
 {
     public class CollectPickUpInteractorTest : ZenjectUnitTestFixture
     {
+        [Inject] IScoreEntity score = default;
         [Inject] ICollectPickUpUseCase useCase = default;
 
         [SetUp]
         public void 前準備()
         {
+            // entity
+            Container.BindIFactory<int, IPointEntity>().To<PointEntity>();
+            Container.BindInterfacesTo<ScoreEntity>().AsCached();
+
             // structure
             Container.BindIFactory<string, ICollectPickUpStructure>()
                 .To<CollectPickUpStructure>();
@@ -40,6 +46,24 @@ namespace StudyCafuRollABall.Tests.EditMode.Scripts.Domain.UseCase
             useCase.Collect(expected);
 
             Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void 収集してスコアを1点だけ加点できる()
+        {
+            var actual = 0;
+            score.Points.Subscribe(x => actual = x.Value);
+
+            // 最初は0点のはず
+            Assert.That(actual, Is.Zero);
+
+            const string dummy = "Name of Pick Up";
+            useCase.Collect(dummy);
+
+            // 収集後に1点になるはず。
+            const int expected = 1;
+            Assert.That(actual, Is.EqualTo(expected));
+
         }
     }
 }
