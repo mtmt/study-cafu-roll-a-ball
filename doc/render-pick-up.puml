@@ -1,0 +1,88 @@
+@startuml
+
+title `Pick Up`表示
+
+package Domain {
+    package Entity {
+        interface IRenderPickUpEntity {
+            + BoolReactiveProperty IsVisible { get; }
+            + void Show()
+            + void hide()
+        }
+        class RenderPickUpEntity {
+            + BoolReactiveProperty IsVisible { get; }
+            + void Show()
+            + void hide()
+        }
+    }
+    package Structure {
+        interface IRenderPickUpStructure {
+            + bool IsVisible { get; }
+        }
+        class RenderPickUpStructure <<(S,orange)struct>> {
+            + bool IsVisible { get; }
+        }
+    }
+    package Translator {
+        class RenderPickUpTranslator {
+            + IRenderPickUpStructure Translate(IRenderPickUpEntity entity)
+        }
+    }
+    package UseCase {
+        interface IRenderPickUpUseCase {
+            + void Render(IRenderPickUpEntity entity)
+        }
+        class RenderPickUpInteractor {
+            + void Render(IRenderPickUpEntity entity)
+        }
+        interface IRenderPickUpPresenter {
+            + void Render(IPickUpStructure structure)
+        }
+        interface IRenderPickUpTranslator {
+            + IRenderPickUpStructure Translate(IRenderPickUpEntity entity)
+        }
+    }
+}
+package Presentation {
+    package Presenter {
+        interface IRenderPickUpView {
+            + void Render(bool isVisible)
+        }
+        class RenderPickUpPresenter {
+            + void Render(IPickUpStructure structure)
+        }
+    }
+    package View {
+        class RenderPickUpView {
+            + void Render(bool isVisible)
+        }
+    }
+}
+
+IRenderPickUpEntity <|.. RenderPickUpEntity
+
+IRenderPickUpStructure <|.. RenderPickUpStructure
+
+IRenderPickUpUseCase <|.. RenderPickUpInteractor
+IRenderPickUpUseCase ..> IRenderPickUpEntity
+
+RenderPickUpInteractor ..> IRenderPickUpEntity
+RenderPickUpInteractor ..> IRenderPickUpTranslator
+RenderPickUpInteractor ..> IRenderPickUpStructure
+RenderPickUpInteractor .left.> IRenderPickUpPresenter
+
+IRenderPickUpTranslator <|.. RenderPickUpTranslator
+IRenderPickUpTranslator ..> IRenderPickUpEntity
+
+RenderPickUpTranslator ..> IRenderPickUpEntity
+RenderPickUpTranslator ..> IRenderPickUpStructure
+
+IRenderPickUpPresenter <|.left. RenderPickUpPresenter
+IRenderPickUpPresenter ..> IRenderPickUpStructure
+
+RenderPickUpPresenter ..> IRenderPickUpStructure
+RenderPickUpPresenter ..> IRenderPickUpView
+
+IRenderPickUpView <|.. RenderPickUpView
+
+@enduml

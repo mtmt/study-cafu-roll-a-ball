@@ -1,0 +1,53 @@
+@startuml
+
+title プレイヤー移動
+
+package Domain {
+    package Entity {
+        interface IPlayerEntity {
+            Vector3 Position
+            void AddForce(Vector3 force)
+        }
+        class PlayerEntity {
+            Vector3 Position
+            void AddForce(Vector3 force)
+        }
+    }
+    package UseCase {
+        interface IMovePlayerUseCase {
+            float Speed
+            void Move(Vector3 direction)
+        }
+        class MovePlayerInteractor {
+            float Speed
+            void Move(Vector3 direction)
+        }
+    }
+}
+package Presentation {
+    package Controller {
+        interface IDirectionTrigger {
+            IObservable<Unit> Stream
+        }
+        class MovePlayerController {
+        }
+    }
+    package View {
+        class MovePlayerInputHandler {
+            IObservable<Unit> Stream
+        }
+    }
+}
+
+IPlayerEntity <|.. PlayerEntity
+
+IMovePlayerUseCase <|.. MovePlayerInteractor
+MovePlayerInteractor .up.> IPlayerEntity : call >
+
+MovePlayerController .right.> IMovePlayerUseCase : call >
+MovePlayerController .left.> IDirectionTrigger : use >
+
+IDirectionTrigger <|.. MovePlayerInputHandler
+
+
+@enduml
