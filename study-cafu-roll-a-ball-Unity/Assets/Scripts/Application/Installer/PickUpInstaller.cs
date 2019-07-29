@@ -12,11 +12,15 @@ namespace StudyCafuRollABall.Application.Installer
 {
     public class PickUpInstaller : MonoInstaller
     {
+        [SerializeField] Settings settings = default;
+
         public override void InstallBindings()
         {
             // entity
             Container.BindInterfacesTo<RenderPickUpEntity>().AsCached()
                 .WithArguments(true);
+            Container.BindInterfacesTo<RotatePickUpEntity>().AsCached()
+                .WithArguments(settings.transform);
 
             // structure
             Container.BindIFactory<bool, IRenderPickUpStructure>()
@@ -36,5 +40,12 @@ namespace StudyCafuRollABall.Application.Installer
             // view
             Container.BindInterfacesTo<RenderPickUpView>().AsCached();
         }
+
+        [Serializable]
+        public class Settings
+        {
+            public Transform transform;
+        }
+
     }
 }
